@@ -1,0 +1,34 @@
+{
+  "name": "rickandmortyapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imEag/rickandmortyAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imEag/rickandmortyAPI/issues"
+  },
+  "homepage": "https://github.com/imEag/rickandmortyAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.5.0",
+    "mongoose": "^6.5.0",
+    "mongoose-paginate-v2": "^1.7.0",
+    "nodemon": "^2.0.19",
+    "pm2": "^5.2.0",
+    "webpack": "^5.74.0",
+    "webpack-dev-middleware": "^5.3.3"
+  },
+  "keywords": [],
+  "description": ""
+}

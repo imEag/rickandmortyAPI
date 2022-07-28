@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const mongoosePagination = require('mongoose-paginate-v2');
 
 const CharacterSchema = new Schema({
     name: { type: String, required: true },
@@ -13,3 +14,7 @@ const CharacterSchema = new Schema({
     episode: [{ type: Schema.Type.ObjectId, ref: 'episode' }],
     created: { type: Date }
 });
+
+CharacterSchema.plugin(mongoosePagination);
+
+mongoose.model('character', CharacterSchema);

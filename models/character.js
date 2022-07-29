@@ -34,7 +34,7 @@ CharacterSchema.statics.addLocation = function (id, name) {
 }
 
 CharacterSchema.statics.findLocation = function (id) {
-    return this.findbyId(id)
+    return this.findById(id)
         .populate('location')
         .then(character => character.location)
         .catch(err => handleError(err));
@@ -58,7 +58,7 @@ CharacterSchema.statics.addEpisode = function (id, name) {
 }
 
 CharacterSchema.statics.findEpisode = function (id) {
-    return this.findbyId(id)
+    return this.findById(id)
         .populate('episode')
         .then(character => character.episode)
         .catch(err => handleError(err));

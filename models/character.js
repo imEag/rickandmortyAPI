@@ -80,7 +80,6 @@ CharacterSchema.statics.findPagination = async function ({ page }) {
         },
         results: response.docs
     }
-    console.log(result);
     return result;
 }
 

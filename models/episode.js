@@ -12,4 +12,19 @@ const EpisodeSchema = new Schema({
 
 EpisodeSchema.plugin(mongoosePagination);
 
+EpisodeSchema.statics.findPagination = async function ({ page }) {
+    const response = await this.paginate({}, { page, limit: 20 });
+    console.log(response)
+    const result = {
+        info: {
+            next: response.nextPage,
+            pages: response.totalPages,
+            count: response.totalDocs,
+            prev: response.prevPage
+        },
+        results: response.docs
+    }
+    return result;
+}
+
 module.exports = mongoose.model('episode', EpisodeSchema);

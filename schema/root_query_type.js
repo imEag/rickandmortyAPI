@@ -12,6 +12,7 @@ const CharacterType = require('./types/character_type');
 const LocationType = require('./types/location_type');
 const EpisodeType = require('./types/episode_type');
 
+//info type FOR PAGINATION
 const InfoType = new GraphQLObjectType({
     name: 'InfoType',
     fields: () => ({
@@ -22,6 +23,7 @@ const InfoType = new GraphQLObjectType({
     })
 });
 
+//TYPES FOR PAGINATION
 const CharactersPageType = new GraphQLObjectType({
     name: 'CharactersPage',
     fields: () => ({
@@ -64,9 +66,10 @@ const RootQuery = new GraphQLObjectType({
             }
         },
         locations: {
-            type: new GraphQLList(LocationType),
-            resolve() {
-                return Location.find({});
+            type: LocationsPageType,
+            args: { page: { type: GraphQLInt } },
+            resolve(parentValue, { page }) {
+                return Location.findPagination({ page });
             }
         },
         location: {
@@ -74,6 +77,20 @@ const RootQuery = new GraphQLObjectType({
             args: { id: { type: new GraphQLNonNull(GraphQLID) } },
             resolve(parentValue, { id }) {
                 return Location.findById(id);
+            }
+        },
+        episodes: {
+            type: EpisodesPageType,
+            args: { page: { type: GraphQLInt } },
+            resolve(parentValue, { page }) {
+                return Episode.findPagination({ page });
+            }
+        },
+        episode: {
+            type: EpisodeType,
+            args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+            resolve(parentValue, { id }) {
+                return Episode.findById(id);
             }
         }
     })

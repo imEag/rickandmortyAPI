@@ -16,6 +16,10 @@ const CharacterSchema = new Schema({
     created: { type: Date }
 });
 
+//add plugin to paginate
+CharacterSchema.plugin(mongoosePagination);
+
+
 //LOCATION RELATED FUNTIONS
 CharacterSchema.statics.addLocation = function (id, name) {
     const Location = mongoose.model('location');
@@ -64,9 +68,23 @@ CharacterSchema.statics.findEpisode = function (id) {
         .catch(err => handleError(err));
 }
 
+CharacterSchema.statics.findPagination = async function ({ page }) {
+    const response = await this.paginate({}, { page, limit: 20 });
+    console.log(response)
+    const result = {
+        info: {
+            next: response.nextPage,
+            pages: response.totalPages,
+            count: response.totalDocs,
+            prev: response.prevPage
+        },
+        results: response.docs
+    }
+    console.log(result);
+    return result;
+}
 
-//add plugin to paginate
-CharacterSchema.plugin(mongoosePagination);
+
 
 //export model
 module.exports = mongoose.model('character', CharacterSchema);

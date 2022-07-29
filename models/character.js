@@ -21,20 +21,8 @@ CharacterSchema.plugin(mongoosePagination);
 
 
 //LOCATION RELATED FUNTIONS
-CharacterSchema.statics.addLocation = function (id, name) {
-    const Location = mongoose.model('location');
-
-    return this.findById(id)
-        .then(character => {
-            //create new location
-            const location = new Location({ name });
-            //add that location to character's attr
-            character.location = location;
-            //save to mongodb
-            return Promise.all([location.save(), character.save()])
-                .then(([location, character]) => character)
-                .catch(err => handleError(err));
-        })
+CharacterSchema.statics.addLocation = function ({ location_id, character_id }) {
+    return this.findByIdAndUpdate({ _id: character_id }, { location: location_id }, { new: true });
 }
 
 CharacterSchema.statics.findLocation = function (id) {

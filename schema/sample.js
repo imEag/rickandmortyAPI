@@ -133,3 +133,19 @@ mutation addEpisode {
   }
 }
 `
+//ADD LOCATION TO CHARACTER
+
+`
+mutation addLocToChar {
+  addLocToChar(
+    location_id: "62e4460aecc5f76bc0e0f84d",
+    character_id: "5d299c853d1d85c017cc3e01"
+  ) {
+    id,
+    name,
+    location {
+      id
+    }
+  }
+}
+`

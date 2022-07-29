@@ -58,6 +58,13 @@ const mutation = new GraphQLObjectType({
             resolve(parentValue, { id, name, episode, air_date, characters, created }) {
                 return (new Episode({ id, name, episode, air_date, characters, created })).save();
             }
+        },
+        addLocToChar: {
+            type: CharacterType,
+            args: { location_id: { type: GraphQLID }, character_id: { type: GraphQLID } },
+            resolve(parentValue, { location_id, character_id }) {
+                return Character.addLocation({ location_id, character_id });
+            }
         }
     }
 });

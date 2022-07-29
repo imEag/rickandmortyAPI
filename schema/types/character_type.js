@@ -21,7 +21,7 @@ const CharacterType = new GraphQLObjectType({
         origin: {
             type: LocationType,
             resolve(parentValue) {
-                return Character.findLocation(parentValue.id);
+                return Character.findOrigin(parentValue.id);
             }
         },
         location: {

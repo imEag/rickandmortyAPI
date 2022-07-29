@@ -19,8 +19,20 @@ const CharacterSchema = new Schema({
 //add plugin to paginate
 CharacterSchema.plugin(mongoosePagination);
 
+//ORIGIN AND LOCATION RELATED FUNTIONS
+CharacterSchema.statics.addOrigin = function ({ origin_id, character_id }) {
+    return this.findByIdAndUpdate({ _id: character_id }, { origin: origin_id }, { new: true })
+        .then()
+        .catch(err => console.error(err));
+}
 
-//LOCATION RELATED FUNTIONS
+CharacterSchema.statics.findOrigin = function (id) {
+    return this.findById(id)
+        .populate('origin')
+        .then(character => character.origin)
+        .catch(err => handleError(err));
+}
+
 CharacterSchema.statics.addLocation = function ({ location_id, character_id }) {
     return this.findByIdAndUpdate({ _id: character_id }, { location: location_id }, { new: true })
         .then()
@@ -35,20 +47,10 @@ CharacterSchema.statics.findLocation = function (id) {
 }
 
 //EPISODE RELATED FUNTIONS
-CharacterSchema.statics.addEpisode = function (id, name) {
-    const Episode = mongoose.model('episode');
-
-    return this.findById(id)
-        .then(character => {
-            //create new episode
-            const episode = new Episode({ name });
-            //add that episode to character's attr
-            song.episodes.push(episode);
-            //save to mongodb
-            return Promise.all([episode.save(), song.save()])
-                .then(([episode, character]) => character)
-                .catch(err => handleError(err));
-        });
+CharacterSchema.statics.addEpisode = function ({ location_id, character_id }) {
+    return this.findByIdAndUpdate({ _id: character_id }, { location: location_id }, { new: true })
+        .then()
+        .catch(err => console.error(err));
 }
 
 CharacterSchema.statics.findEpisode = function (id) {

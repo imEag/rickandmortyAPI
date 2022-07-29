@@ -25,6 +25,7 @@ const episodesData = JSON.parse(fs.readFileSync(`${__dirname}/episodes.json`, 'u
 const import_characters = async () => {
     await charactersData.map((char) => {
         const new_char = new Character({
+            _id: char._id,
             name: char.name,
             status: char.status,
             species: char.species,
@@ -47,6 +48,7 @@ const import_characters = async () => {
 const import_locations = async () => {
     await locationsData.map((loc) => {
         const new_loc = new Location({
+            _id: loc._id,
             name: loc.name,
             type: loc.type,
             dimension: loc.dimension,
@@ -64,6 +66,7 @@ const import_locations = async () => {
 const import_episodes = async () => {
     await episodesData.map((epi) => {
         const new_epi = new Episode({
+            _id: epi._id,
             name: epi.name,
             air_date: epi.air_date,
             episode: epi.episode,

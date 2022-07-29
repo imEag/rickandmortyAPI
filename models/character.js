@@ -42,7 +42,7 @@ CharacterSchema.statics.findLocation = function (id) {
 }
 
 //EPISODE RELATED FUNTIONS
-SongSchema.statics.addEpisode = function (id, name) {
+CharacterSchema.statics.addEpisode = function (id, name) {
     const Episode = mongoose.model('episode');
 
     return this.findById(id)

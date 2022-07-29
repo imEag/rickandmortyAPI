@@ -12,4 +12,4 @@ const EpisodeSchema = new Schema({
 
 EpisodeSchema.plugin(mongoosePagination);
 
-mongoose.model('episode', EpisodeSchema);
+module.exports = mongoose.model('episode', EpisodeSchema);

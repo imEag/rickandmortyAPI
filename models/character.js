@@ -69,4 +69,4 @@ CharacterSchema.statics.findEpisode = function (id) {
 CharacterSchema.plugin(mongoosePagination);
 
 //export model
-mongoose.model('character', CharacterSchema);
+module.exports = mongoose.model('character', CharacterSchema);

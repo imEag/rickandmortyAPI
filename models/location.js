@@ -12,4 +12,4 @@ const LocationSchema = new Schema({
 
 LocationSchema.plugin(mongoosePagination);
 
-mongoose.model('location', LocationSchema);
+module.exports = mongoose.model('location', LocationSchema);

@@ -22,7 +22,7 @@ app.use('/', bodyParser.json());
     graphiql: true
 })); */
 
-//connect to MongoDB
+//CONNECT to MongoDB
 mongoose.Promise = global.Promise;
 app.set('port', 3000);
 

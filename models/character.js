@@ -17,30 +17,6 @@ const CharacterSchema = new Schema({
     created: { type: Date }
 });
 
-//ORIGIN RELATED FUNTIONS
-CharacterSchema.statics.addOrigin = function (id, name) {
-    const Origin = mongoose.model('location');
-
-    return this.findById(id)
-        .then(character => {
-            //create new location
-            const origin = new Origin({ name });
-            //add that location to character's attr
-            character.origin = origin;
-            //save to mongodb
-            return Promise.all([origin.save(), character.save()])
-                .then(([origin, character]) => character)
-                .catch(err => handleError(err));
-        })
-}
-
-CharacterSchema.statics.findOrigin = function (id) {
-    return this.findbyId(id)
-        .populate('origin')
-        .then(character => character.origin)
-        .catch(err => handleError(err));
-}
-
 //LOCATION RELATED FUNTIONS
 CharacterSchema.statics.addLocation = function (id, name) {
     const Location = mongoose.model('location');

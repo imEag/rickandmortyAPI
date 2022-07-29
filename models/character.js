@@ -9,10 +9,10 @@ const CharacterSchema = new Schema({
     species: { type: String },
     type: { type: String },
     gender: { type: String },
-    origin: { type: Schema.Type.ObjectId, ref: 'location' },
-    location: { type: Schema.Type.ObjectId, ref: 'location' },
+    origin: { type: Schema.Types.ObjectId, ref: 'location' },
+    location: { type: Schema.Types.ObjectId, ref: 'location' },
     image: { type: String },
-    episode: [{ type: Schema.Type.ObjectId, ref: 'episode' }],
+    episode: [{ type: Schema.Types.ObjectId, ref: 'episode' }],
     created: { type: Date }
 });
 

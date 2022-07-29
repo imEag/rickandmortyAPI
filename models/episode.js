@@ -6,7 +6,7 @@ const EpisodeSchema = new Schema({
     name: { type: String, required: true },
     air_date: { type: String },
     episode: { type: String },
-    characters: [{ type: Schema.Type.ObjectId, ref: 'character' }],
+    characters: [{ type: Schema.Types.ObjectId, ref: 'character' }],
     created: { type: Date }
 });
 

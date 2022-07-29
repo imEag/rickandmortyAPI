@@ -16,7 +16,7 @@ const LocationType = new GraphQLObjectType({
         type: { type: GraphQLString },
         dimension: { type: GraphQLString },
         residents: {
-            type: new GraphQLList(CharacterType),
+            type: new GraphQLList(require('./character_type')),
             resolve(parentValue) {
                 return Location.findById(parentValue)
                     .populate('residents')

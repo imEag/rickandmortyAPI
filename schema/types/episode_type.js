@@ -16,7 +16,7 @@ const EpisodeType = new GraphQLObjectType({
         air_date: { type: GraphQLString },
         episode: { type: GraphQLString },
         characters: {
-            type: new GraphQLList(CharacterType),
+            type: new GraphQLList(require('./character_type')),
             resolve(parentValue) {
                 return Episode.findById(parentValue)
                     .populate('characters')

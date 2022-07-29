@@ -81,3 +81,55 @@ mutation addCharacter(
     "episode": []
   }
 `
+
+//ADD LOCATION
+`
+mutation addLocation(
+  $name: String, 
+  $dimension: String, 
+  $type: String,  
+  $created: String,  
+  $residents: [ID],
+) {
+	addLocation(
+    name: $name, 
+  	dimension: $dimension, 
+  	type: $type, 
+  	created: $created,
+    residents:$residents
+  ) {
+    id,
+    name, 
+    type,
+    dimension,
+    residents {
+      id
+    },
+    created
+  }
+}
+
+{
+  "name": "planet 9",
+  "dimension": "human",
+  "type": "unknown",
+  "created": "unknown",
+  "residents": []
+}
+`
+
+//ADD EPISODE 
+
+`
+mutation addEpisode {
+  addEpisode(
+    name: "Hello world!",
+    episode: "S33E1",
+    air_date: "December 18, 2032",
+    created: "yesterday"
+  ) {
+    id,
+    name, episode
+  }
+}
+`

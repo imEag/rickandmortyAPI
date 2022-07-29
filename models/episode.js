@@ -7,7 +7,7 @@ const EpisodeSchema = new Schema({
     air_date: { type: String },
     episode: { type: String },
     characters: [{ type: Schema.Types.ObjectId, ref: 'character' }],
-    created: { type: Date }
+    created: { type: String }
 });
 
 EpisodeSchema.plugin(mongoosePagination);

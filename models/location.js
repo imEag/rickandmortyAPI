@@ -7,7 +7,7 @@ const LocationSchema = new Schema({
     type: { type: String },
     dimension: { type: String },
     residents: [{ type: Schema.Types.ObjectId, ref: 'character' }],
-    created: { type: Date }
+    created: { type: String }
 });
 
 LocationSchema.plugin(mongoosePagination);

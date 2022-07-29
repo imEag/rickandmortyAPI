@@ -22,7 +22,9 @@ CharacterSchema.plugin(mongoosePagination);
 
 //LOCATION RELATED FUNTIONS
 CharacterSchema.statics.addLocation = function ({ location_id, character_id }) {
-    return this.findByIdAndUpdate({ _id: character_id }, { location: location_id }, { new: true });
+    return this.findByIdAndUpdate({ _id: character_id }, { location: location_id }, { new: true })
+        .then()
+        .catch(err => console.error(err));
 }
 
 CharacterSchema.statics.findLocation = function (id) {

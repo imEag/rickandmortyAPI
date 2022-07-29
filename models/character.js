@@ -1,4 +1,3 @@
-const { stripIgnoredCharacters } = require('graphql');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const mongoosePagination = require('mongoose-paginate-v2');

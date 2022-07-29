@@ -6,7 +6,7 @@ const LocationSchema = new Schema({
     name: { type: String, required: true },
     type: { type: String },
     dimension: { type: String },
-    residents: [{ type: Schema.Types.ObjectId, ref: 'character'}],
+    residents: [{ type: Schema.Types.ObjectId, ref: 'character' }],
     created: { type: Date }
 });
 

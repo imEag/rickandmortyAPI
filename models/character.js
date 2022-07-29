@@ -19,6 +19,12 @@ const CharacterSchema = new Schema({
 //add plugin to paginate
 CharacterSchema.plugin(mongoosePagination);
 
+CharacterSchema.statics.updateCharacter = function ({ id, name, status, species, type, gender, image, created }) {
+    return this.findByIdAndUpdate({ _id: id }, { _id: id, name, status, species, type, gender, image, created }, { new: true })
+        .then()
+        .catch(err => console.error(err));
+}
+
 //ORIGIN AND LOCATION RELATED FUNTIONS
 CharacterSchema.statics.addOrigin = function ({ origin_id, character_id }) {
     return this.findByIdAndUpdate({ _id: character_id }, { origin: origin_id }, { new: true })
@@ -47,11 +53,6 @@ CharacterSchema.statics.findLocation = function (id) {
 }
 
 //EPISODE RELATED FUNTIONS
-CharacterSchema.statics.addEpisode = function ({ location_id, character_id }) {
-    return this.findByIdAndUpdate({ _id: character_id }, { location: location_id }, { new: true })
-        .then()
-        .catch(err => console.error(err));
-}
 
 CharacterSchema.statics.findEpisode = function (id) {
     return this.findById(id)
@@ -62,7 +63,6 @@ CharacterSchema.statics.findEpisode = function (id) {
 
 CharacterSchema.statics.findPagination = async function ({ page }) {
     const response = await this.paginate({}, { page, limit: 20 });
-    console.log(response)
     const result = {
         info: {
             next: response.nextPage,

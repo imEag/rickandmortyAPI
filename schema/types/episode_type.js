@@ -21,7 +21,6 @@ const EpisodeType = new GraphQLObjectType({
                 return Episode.findById(parentValue)
                     .populate('characters')
                     .then(episode => {
-                        console.log(episode)
                         return episode.characters
                     });
             }

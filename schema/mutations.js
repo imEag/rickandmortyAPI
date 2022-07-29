@@ -72,6 +72,36 @@ const mutation = new GraphQLObjectType({
             resolve(parentValue, { origin_id, character_id }) {
                 return Character.addOrigin({ origin_id, character_id });
             }
+        },
+        addEpiToChar: {
+            type: CharacterType,
+            args: { episode_id: { type: new GraphQLList(GraphQLID) }, character_id: { type: GraphQLID } },
+            resolve(parentValue, { episode_id, character_id }) {
+                return Character.addEpisode({ episode_id, character_id });
+            }
+        },
+        deleteCharacter: {
+            type: CharacterType,
+            args: { id: { type: GraphQLID } },
+            resolve(parentValue, { id }) {
+                return Character.findByIdAndRemove(id);
+            }
+        },
+        updateCharacter: {
+            type: CharacterType,
+            args: {
+                id: { type: GraphQLID },
+                name: { type: GraphQLString },
+                status: { type: GraphQLString },
+                species: { type: GraphQLString },
+                type: { type: GraphQLString },
+                gender: { type: GraphQLString },
+                image: { type: GraphQLString },
+                created: { type: GraphQLString }
+            },
+            resolve(parentValue, { id, name, status, species, type, gender, image, created }) {
+                return Character.updateCharacter({ id, name, status, species, type, gender, image, created });
+            }
         }
     }
 });

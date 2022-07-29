@@ -14,7 +14,6 @@ LocationSchema.plugin(mongoosePagination);
 
 LocationSchema.statics.findPagination = async function ({ page }) {
     const response = await this.paginate({}, { page, limit: 20 });
-    console.log(response)
     const result = {
         info: {
             next: response.nextPage,

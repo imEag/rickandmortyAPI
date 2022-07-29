@@ -21,7 +21,6 @@ const LocationType = new GraphQLObjectType({
                 return Location.findById(parentValue)
                     .populate('residents')
                     .then(location => {
-                        console.log(location)
                         return location.residents
                     });
             }

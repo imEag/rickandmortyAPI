@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const mongoosePagination = require('mongoose-paginate-v2');
 
 const LocationSchema = new Schema({
-    name: { type: String, required: true },
+    name: { type: String },
     type: { type: String },
     dimension: { type: String },
     residents: [{ type: Schema.Types.ObjectId, ref: 'character' }],

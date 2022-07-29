@@ -4,7 +4,7 @@ const mongoosePagination = require('mongoose-paginate-v2');
 
 //ATTR SCHEMA
 const CharacterSchema = new Schema({
-    name: { type: String, required: true },
+    name: { type: String },
     status: { type: String },
     species: { type: String },
     type: { type: String },
@@ -13,7 +13,7 @@ const CharacterSchema = new Schema({
     location: { type: Schema.Types.ObjectId, ref: 'location' },
     image: { type: String },
     episode: [{ type: Schema.Types.ObjectId, ref: 'episode' }],
-    created: { type: Date }
+    created: { type: String }
 });
 
 //add plugin to paginate

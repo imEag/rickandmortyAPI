@@ -5,9 +5,11 @@ const expressGraphQL = require('express-graphql').graphqlHTTP;
 const bodyParser = require('body-parser');
 const schema = require('./schema/schema');
 require('dotenv').config();
+const cors = require('cors');
 
 const app = express();
 
+app.use( cors() );
 app.set('port', 4000);
 
 //CONNECT to MongoDB
@@ -34,13 +36,13 @@ app.use('/graphql', expressGraphQL({
 
 
 // headers and cors setup
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
-});
+}); */
 
 // WEBPACK
 /* const webpackMiddleware = require('webpack-dev-middleware');

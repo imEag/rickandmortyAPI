@@ -51,6 +51,12 @@ const EpisodesPageType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: () => ({
+        randomCharacter: {
+            type: CharacterType,
+            resolve() {
+                return Character.findRandom();
+            }
+        },
         characters: {
             type: CharactersPageType,
             args: { page: { type: GraphQLInt } },

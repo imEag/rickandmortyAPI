@@ -19,6 +19,17 @@ const CharacterSchema = new Schema({
 //add plugin to paginate
 CharacterSchema.plugin(mongoosePagination);
 
+CharacterSchema.statics.findRandom = function () {
+    const character_model = this;
+
+    const result = character_model.countDocuments()
+        .then(res => Math.floor(Math.random() * res))
+        .then(randomNumber => character_model.findOne().skip(randomNumber))
+        .catch(err => handleError(err));
+
+    return result
+}
+
 CharacterSchema.statics.updateCharacter = function ({ id, name, status, species, type, gender, image, created }) {
     return this.findByIdAndUpdate({ _id: id }, { _id: id, name, status, species, type, gender, image, created }, { new: true })
         .then()

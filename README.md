@@ -6,10 +6,14 @@ This is an API about Rick And Morty TV Series. Here you can get character's, loc
 ## Features
 
 -Get character Data: id, name, origin, location, episodes, status, type, gender, species and more!
--Get any location data: id, name, dimension, type, date created and residents
+
+-Get any location data: id, name, dimension, type, date created and residents.
+
 -Get episodes information: id, name, air date, characters in the episose and more.
--Use GraphQL
--Create character, location or episode
+
+-Use GraphQL.
+
+-Create character, location or episode.
 
 ## Tech Stack
 

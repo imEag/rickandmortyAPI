@@ -1,7 +1,7 @@
 # rickandmortyAPI
 This is an API about Rick And Morty TV Series. Here you can get character's, location's and episode's data using GraphQL. 
 
-## [Use the API here](https://rickandmortygenerator.site/GraphQL)
+## [Use the API here](https://imeag.site/rickandmorty)
 
 ## Features
 
